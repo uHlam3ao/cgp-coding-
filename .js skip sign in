@@ -1,0 +1,47 @@
+(function () {
+    const phrases = [
+        'skip',
+        'skip for now',
+        'not now',
+        'maybe later',
+        'continue as guest',
+        'continue without signing in',
+        'continue without login',
+        'continue without an account',
+        'no thanks',
+        'dismiss',
+        'close'
+    ];
+
+    function scan() {
+        document
+            .querySelectorAll('button, a, div[role="button"]')
+            .forEach(el => {
+                const text = (el.innerText || '')
+                    .trim()
+                    .toLowerCase();
+
+                if (
+                    phrases.some(
+                        phrase =>
+                            text === phrase ||
+                            text.includes(phrase)
+                    )
+                ) {
+                    console.log(`✅ Clicking: "${text}"`);
+                    el.click();
+                }
+            });
+    }
+
+    scan();
+
+    const observer = new MutationObserver(scan);
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    console.log('✅ Sign-in prompt skipper active');
+})();
