@@ -1,0 +1,37 @@
+// adds more button
+// code bellow
+(function() {
+    // Locate the original submit button
+    const originalBtn = document.querySelector('#composer-submit-button');
+    if (!originalBtn) {
+        console.log('❌ Original button not found.');
+        return;
+    }
+
+    // Check if the custom button already exists to prevent duplicates
+    if (document.querySelector('#custom-action-button')) return;
+
+
+    const customBtn = document.createElement('button');
+    customBtn.id = 'custom-action-button';
+    customBtn.innerText = '✨ Custom Option';
+    
+ 
+    customBtn.style.padding = '5px 10px';
+    customBtn.style.marginLeft = '8px';
+    customBtn.style.backgroundColor = '#10a37f';
+    customBtn.style.color = '#fff';
+    customBtn.style.border = 'none';
+    customBtn.style.borderRadius = '4px';
+    customBtn.style.cursor = 'pointer';
+
+    // Define what happens when the new button is clicked
+    customBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Custom option clicked! You can wire this up to a specific prompt or API call.');
+    });
+
+    // Insert the new button right after the original button
+    originalBtn.parentNode.insertBefore(customBtn, originalBtn.nextSibling);
+    console.log('✅ Custom option button added.');
+})();
