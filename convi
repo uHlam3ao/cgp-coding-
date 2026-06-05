@@ -1,0 +1,9 @@
+// this will remove daily limits
+(function() {
+    const btn = document.querySelector('#composer-submit-button');
+    if (!btn) return;
+    btn.removeAttribute('disabled');
+    const observer = new MutationObserver(() => btn.removeAttribute('disabled'));
+    observer.observe(btn, { attributes: true });
+    console.log(' SEND BUTTON UNLOCKED');
+})();
