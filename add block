@@ -1,0 +1,8 @@
+! --- ChatGPT UI Cleanup and Element Blocks ---
+! Hides sign-in overlay blockers and login nags
+chatgpt.com##div[class*="login"], div[class*="signup"], div[id*="login-modal"]
+chatgpt.com##div:has-text(Sign in to save your history)
+chatgpt.com##button:has-text(Sign in)
+
+! Blocks background telemetry / block scripts that trigger login gates
+||://chatgpt.com
